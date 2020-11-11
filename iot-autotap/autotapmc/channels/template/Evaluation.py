@@ -63,3 +63,5 @@ smoke_sensor = {'detect': 'bool'}
 weather = {'temperature': 'numeric, external',
            'raining': 'bool, external'}
 clock = {'time': 'numeric, external'}
+air = {'temperature': 'numeric, external',
+       'humidity': 'numeric, external'}

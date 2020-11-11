@@ -32,3 +32,5 @@ def testall():
     for patch, label in zip(new_patch, label):
         print(label, printTap(patch))
     print('------------------------------------------------------------------')
+
+testall()

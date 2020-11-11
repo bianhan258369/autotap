@@ -37,6 +37,7 @@ def calculateBoolean(formula, var_dict):
     :return:
     """
     token_list = parse(formula, ops, re_splitter)
+
     stack = list()
     for token in token_list:
         if token == '!':
@@ -57,5 +58,4 @@ def calculateBoolean(formula, var_dict):
             raise Exception('Unknown AP token %s in edge formula' % token)
     if len(stack) != 1:
         raise Exception('Wrong edge AP formula format!')
-
     return stack[0]

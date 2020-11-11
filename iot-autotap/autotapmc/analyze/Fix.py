@@ -146,7 +146,6 @@ def _fixEventEdge(edge, system, only_print=False):
     :return: [[patches], [patches], ...], each 'patches' represents a possible fix
     """
     ts = system.transition_system
-
     # First: find all possible actions
     action_list = list()
     for action, dst_field in system.getAction(edge.dst_field, False):
@@ -752,9 +751,12 @@ def generateCompactFix(ltl, tap_list, init_value_dict={}, template_dict=vars(Dev
         template_numeric_dict=crit_value_dict,
         timing_exp_list=exp_t_list
     )
+    ts = system.transition_system
+    ts.writeToGv('my_temp/ts.gv')
 
     # stage 5: fix
     system = _fixRuleEdges(system, new_ltl, record_exp_list)
+
     edge_t, complete_edge_t = _fixConditionGenerator(system, new_ltl, record_exp_list, include_orig=True)
     template_t, other_t = _getPatternList(edge_t, template_numeric_dict=crit_value_dict)
     result_1 = _fixPatternEdge(template_t, complete_edge_t, crit_value_dict)

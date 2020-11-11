@@ -65,7 +65,6 @@ class IoTSystem(metaclass=MetaIoTSystem):
         self.timer_type2_dict = dict()
         self.timer_type2_time_dict = dict()
         self.timer_type2_ap_l_dict = dict()
-
         for t_exp in timing_exp_list:
             if '#' in t_exp:
                 # type 1, exp is a set of action

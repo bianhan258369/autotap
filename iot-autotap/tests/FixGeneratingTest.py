@@ -57,5 +57,4 @@ print(patch_result[0][0][0].log())
 cb = CoffeeBrewing()
 cb_ltl = 'F (coffee_machine.wrong)'
 patch_result = generateFixForSafety(cb, cb_ltl)
-print(patch_result[0][0][0].log())
-print(patch_result[0][0][1].log())
+print(patch_result)

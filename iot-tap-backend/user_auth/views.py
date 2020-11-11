@@ -14,7 +14,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with iot-tap-backend.  If not, see <https://www.gnu.org/licenses/>.
 """
-
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate

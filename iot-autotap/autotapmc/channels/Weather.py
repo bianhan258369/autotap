@@ -17,7 +17,6 @@ You should have received a copy of the GNU General Public License
 along with AutoTap.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-
 from autotapmc.model.Channel import Channel
 
 
@@ -38,3 +37,11 @@ class Weather(Channel):
 
     def ap_raining(self):
         return self.rain
+
+    temperature = 26
+
+    def ap_temperatureGreaterThan25(self):
+        return self.temperature > 25
+
+    def ap_temperatureLessThan5(self):
+        return self.temperature < 5

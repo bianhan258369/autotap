@@ -128,12 +128,12 @@ class ESERule(Rule):
 def translateTapToRule(tap):
     if not isinstance(tap, Tap):
         raise TypeError('the input should be a Tap instance')
-    if len(tap.condition) > 1:
-        raise Exception('the rule is too many conditions for fixing')
+    # if len(tap.condition) > 1:
+    #     raise Exception('the rule is too many conditions for fixing')
     if not tap.trigger:
         raise Exception('fixing does not support state based rule currently')
 
     if tap.condition:
-        return ESERule(tap.trigger, tap.condition[0], tap.action)
+        return ESERule(tap.trigger, ' AND '.join(tap.condition), tap.action)
     else:
         return EERule(tap.trigger, tap.action)

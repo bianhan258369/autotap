@@ -17,10 +17,12 @@ You should have received a copy of the GNU General Public License
 along with AutoTap.  If not, see <https://www.gnu.org/licenses/>.
 """
 
+from autotapmc.channels.AirConditioner import SimpleAC
 from autotapmc.channels.CoffeeMachine import CoffeeMachine
 from autotapmc.channels.Location import Location
 from autotapmc.channels.Weather import Weather
 from autotapmc.channels.GarageDoor import GarageDoor
+from autotapmc.channels.Window import Window
 from autotapmc.model.Tap import ESERule, EERule, SSERule
 from autotapmc.model.IoTSystem import IoTSystem
 import os

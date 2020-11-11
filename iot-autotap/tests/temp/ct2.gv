@@ -1,0 +1,36 @@
+digraph {
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=0, weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=0, trigger_bit_rule=0"] s0
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=1, weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=0, trigger_bit_rule=0"] s1
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=3, weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=0, trigger_bit_rule=0"] s2
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=0, weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=1, trigger_bit_rule=1"] s3
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=1, weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=1, trigger_bit_rule=0"] s4
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=0, weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=1, trigger_bit_rule=0"] s5
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=3, weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=1, trigger_bit_rule=0"] s6
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=2, weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=1, trigger_bit_rule=0"] s7
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=2, weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=0, trigger_bit_rule=0"] s8
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=2, weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=1, trigger_bit_rule=1"] s9
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=3, weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=1, trigger_bit_rule=1"] s10
+	s0 -> s1 [label = "coffee_machine.turnoff"]
+	s0 -> s2 [label = "coffee_machine.brew"]
+	s0 -> s3 [label = "weather.startsRaining"]
+	s3 -> s4 [label = "rule(rule)->coffee_machine.turnoff"]
+	s4 -> s5 [label = "coffee_machine.turnon"]
+	s4 -> s4 [label = "coffee_machine.turnoff"]
+	s4 -> s1 [label = "weather.stopsRaining"]
+	s5 -> s4 [label = "coffee_machine.turnoff"]
+	s5 -> s6 [label = "coffee_machine.brew"]
+	s5 -> s0 [label = "weather.stopsRaining"]
+	s6 -> s7 [label = "coffee_machine.turnoff"]
+	s6 -> s2 [label = "weather.stopsRaining"]
+	s7 -> s7 [label = "coffee_machine.turnoff"]
+	s7 -> s8 [label = "weather.stopsRaining"]
+	s8 -> s8 [label = "coffee_machine.turnoff"]
+	s8 -> s9 [label = "weather.startsRaining"]
+	s9 -> s7 [label = "rule(rule)->coffee_machine.turnoff"]
+	s2 -> s8 [label = "coffee_machine.turnoff"]
+	s2 -> s10 [label = "weather.startsRaining"]
+	s10 -> s7 [label = "rule(rule)->coffee_machine.turnoff"]
+	s1 -> s0 [label = "coffee_machine.turnon"]
+	s1 -> s1 [label = "coffee_machine.turnoff"]
+	s1 -> s4 [label = "weather.startsRaining"]
+}

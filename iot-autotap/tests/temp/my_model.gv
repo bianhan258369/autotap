@@ -1,0 +1,14 @@
+digraph {
+	node [label="weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=0, win.__module__=autotapmc.channels.Window, win.__qualname__=Window, win.open=0"] s0
+	node [label="weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=1, win.__module__=autotapmc.channels.Window, win.__qualname__=Window, win.open=0"] s1
+	node [label="weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=0, win.__module__=autotapmc.channels.Window, win.__qualname__=Window, win.open=1"] s2
+	node [label="weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=1, win.__module__=autotapmc.channels.Window, win.__qualname__=Window, win.open=1"] s3
+	s0 -> s1 [label = "weather.startsRaining"]
+	s0 -> s2 [label = "win.open"]
+	s2 -> s3 [label = "weather.startsRaining"]
+	s2 -> s0 [label = "win.close"]
+	s3 -> s2 [label = "weather.stopsRaining"]
+	s3 -> s1 [label = "win.close"]
+	s1 -> s0 [label = "weather.stopsRaining"]
+	s1 -> s3 [label = "win.open"]
+}

@@ -1,0 +1,22 @@
+digraph G {
+	subgraph cluster0 {
+		label = "Cluster 0"
+		s0 [label="4, 0, acc=<[0]>"]
+		s1 [label="0, 0, acc=<[0]>"]
+		s2 [label="1, 0, acc=<[0]>"]
+		s3 [label="2, 0, acc=<[0]>"]
+		s4 [label="3, 0, acc=<[0]>"]
+	}
+	s0 -> s1 [label="(!RAIN.on & !_triggered & !weather.raining & !win.open) | (Win.closed & !_triggered & !weather.raining & !win.open)"]
+	s0 -> s2 [label="(!RAIN.on & !_triggered & weather.raining & !win.open) | (Win.closed & !_triggered & weather.raining & !win.open)"]
+	s0 -> s3 [label="(!RAIN.on & !_triggered & !weather.raining & win.open) | (Win.closed & !_triggered & !weather.raining & win.open)"]
+	s0 -> s4 [label="(!RAIN.on & !_triggered & weather.raining & win.open) | (Win.closed & !_triggered & weather.raining & win.open)"]
+	s4 -> s3 [label="(!RAIN.on & !_triggered & !weather.raining & win.open) | (Win.closed & !_triggered & !weather.raining & win.open)"]
+	s4 -> s2 [label="(!RAIN.on & !_triggered & weather.raining & !win.open) | (Win.closed & !_triggered & weather.raining & !win.open)"]
+	s3 -> s4 [label="(!RAIN.on & !_triggered & weather.raining & win.open) | (Win.closed & !_triggered & weather.raining & win.open)"]
+	s3 -> s1 [label="(!RAIN.on & !_triggered & !weather.raining & !win.open) | (Win.closed & !_triggered & !weather.raining & !win.open)"]
+	s2 -> s1 [label="(!RAIN.on & !_triggered & !weather.raining & !win.open) | (Win.closed & !_triggered & !weather.raining & !win.open)"]
+	s2 -> s4 [label="(!RAIN.on & !_triggered & weather.raining & win.open) | (Win.closed & !_triggered & weather.raining & win.open)"]
+	s1 -> s2 [label="(!RAIN.on & !_triggered & weather.raining & !win.open) | (Win.closed & !_triggered & weather.raining & !win.open)"]
+	s1 -> s3 [label="(!RAIN.on & !_triggered & !weather.raining & win.open) | (Win.closed & !_triggered & !weather.raining & win.open)"]
+}

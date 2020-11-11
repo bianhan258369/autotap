@@ -1,0 +1,30 @@
+digraph {
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=0, loc.__module__=autotapmc.channels.Location, loc.__qualname__=Location, loc.within=0, trigger_bit_rule=0"] s0
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=1, loc.__module__=autotapmc.channels.Location, loc.__qualname__=Location, loc.within=0, trigger_bit_rule=0"] s1
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=3, loc.__module__=autotapmc.channels.Location, loc.__qualname__=Location, loc.within=0, trigger_bit_rule=0"] s2
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=0, loc.__module__=autotapmc.channels.Location, loc.__qualname__=Location, loc.within=1, trigger_bit_rule=1"] s3
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=3, loc.__module__=autotapmc.channels.Location, loc.__qualname__=Location, loc.within=1, trigger_bit_rule=0"] s4
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=2, loc.__module__=autotapmc.channels.Location, loc.__qualname__=Location, loc.within=1, trigger_bit_rule=0"] s5
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=2, loc.__module__=autotapmc.channels.Location, loc.__qualname__=Location, loc.within=0, trigger_bit_rule=0"] s6
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=2, loc.__module__=autotapmc.channels.Location, loc.__qualname__=Location, loc.within=1, trigger_bit_rule=1"] s7
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=3, loc.__module__=autotapmc.channels.Location, loc.__qualname__=Location, loc.within=1, trigger_bit_rule=1"] s8
+	node [label="coffee_machine.__module__=autotapmc.channels.CoffeeMachine, coffee_machine.__qualname__=CoffeeMachine, coffee_machine.status=1, loc.__module__=autotapmc.channels.Location, loc.__qualname__=Location, loc.within=1, trigger_bit_rule=1"] s9
+	s0 -> s1 [label = "coffee_machine.turnoff"]
+	s0 -> s2 [label = "coffee_machine.brew"]
+	s0 -> s3 [label = "loc.walkin"]
+	s3 -> s4 [label = "rule(rule)->coffee_machine.brew"]
+	s4 -> s5 [label = "coffee_machine.turnoff"]
+	s4 -> s2 [label = "loc.walkout"]
+	s5 -> s5 [label = "coffee_machine.turnoff"]
+	s5 -> s6 [label = "loc.walkout"]
+	s6 -> s6 [label = "coffee_machine.turnoff"]
+	s6 -> s7 [label = "loc.walkin"]
+	s7 -> s5 [label = "rule(rule)->coffee_machine.brew"]
+	s2 -> s6 [label = "coffee_machine.turnoff"]
+	s2 -> s8 [label = "loc.walkin"]
+	s8 -> s5 [label = "rule(rule)->coffee_machine.brew"]
+	s1 -> s0 [label = "coffee_machine.turnon"]
+	s1 -> s1 [label = "coffee_machine.turnoff"]
+	s1 -> s9 [label = "loc.walkin"]
+	s9 -> s5 [label = "rule(rule)->coffee_machine.brew"]
+}

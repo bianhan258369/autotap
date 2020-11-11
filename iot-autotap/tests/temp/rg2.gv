@@ -1,0 +1,15 @@
+digraph {
+	node [label="weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=0, door.__module__=autotapmc.channels.GarageDoor, door.__qualname__=GarageDoor, door.door_open=0, trigger_bit_rule1=0, trigger_bit_rule2=0"] s0
+	node [label="weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=0, door.__module__=autotapmc.channels.GarageDoor, door.__qualname__=GarageDoor, door.door_open=1, trigger_bit_rule1=0, trigger_bit_rule2=0"] s1
+	node [label="weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=1, door.__module__=autotapmc.channels.GarageDoor, door.__qualname__=GarageDoor, door.door_open=0, trigger_bit_rule1=0, trigger_bit_rule2=0"] s2
+	node [label="weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=1, door.__module__=autotapmc.channels.GarageDoor, door.__qualname__=GarageDoor, door.door_open=1, trigger_bit_rule1=0, trigger_bit_rule2=1"] s3
+	node [label="weather.__module__=autotapmc.channels.Weather, weather.__qualname__=Weather, weather.rain=1, door.__module__=autotapmc.channels.GarageDoor, door.__qualname__=GarageDoor, door.door_open=1, trigger_bit_rule1=1, trigger_bit_rule2=0"] s4
+	s0 -> s1 [label = "door.open"]
+	s0 -> s2 [label = "weather.startsRaining"]
+	s2 -> s3 [label = "door.open"]
+	s2 -> s0 [label = "weather.stopsRaining"]
+	s3 -> s2 [label = "rule(rule2)->door.close"]
+	s1 -> s0 [label = "door.close"]
+	s1 -> s4 [label = "weather.startsRaining"]
+	s4 -> s2 [label = "rule(rule1)->door.close"]
+}

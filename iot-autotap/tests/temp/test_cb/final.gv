@@ -1,0 +1,36 @@
+digraph G {
+	subgraph cluster1 {
+		label = "Cluster 1"
+		s0 [label="8, 1, acc=<[]>"]
+		s1 [label="0, 1, acc=<[]>"]
+		s2 [label="1, 1, acc=<[]>"]
+		s3 [label="2, 1, acc=<[]>"]
+		s4 [label="3, 1, acc=<[]>"]
+		s5 [label="4, 1, acc=<[]>"]
+		s8 [label="7, 1, acc=<[]>"]
+	}
+	subgraph cluster0 {
+		label = "Cluster 0"
+		s6 [label="5, 0, acc=<[0]>"]
+		s7 [label="6, 0, acc=<[0]>"]
+		s9 [label="7, 0, acc=<[0]>"]
+	}
+	s0 -> s1 [label="!_triggered & !coffee_machine.brewing & !coffee_machine.wrong & !loc.within & !rule"]
+	s0 -> s2 [label="!_triggered & coffee_machine.brewing & !coffee_machine.wrong & !loc.within & !rule"]
+	s0 -> s3 [label="_triggered & !coffee_machine.brewing & !coffee_machine.wrong & loc.within & rule"]
+	s0 -> s4 [label="!_triggered & coffee_machine.brewing & !coffee_machine.wrong & loc.within & !rule"]
+	s0 -> s5 [label="_triggered & coffee_machine.brewing & !coffee_machine.wrong & loc.within & rule"]
+	s0 -> s6 [label="!_triggered & !coffee_machine.brewing & coffee_machine.wrong & loc.within & !rule"]
+	s0 -> s7 [label="!_triggered & !coffee_machine.brewing & coffee_machine.wrong & !loc.within & !rule"]
+	s0 -> s8 [label="_triggered & !coffee_machine.brewing & coffee_machine.wrong & loc.within & rule"]
+	s8 -> s6 [label="!_triggered & !coffee_machine.brewing & coffee_machine.wrong & loc.within & !rule"]
+	s7 -> s9 [label="_triggered & !coffee_machine.brewing & coffee_machine.wrong & loc.within & rule"]
+	s9 -> s6 [label="!_triggered & !coffee_machine.brewing & coffee_machine.wrong & loc.within & !rule"]
+	s6 -> s7 [label="!_triggered & !coffee_machine.brewing & coffee_machine.wrong & !loc.within & !rule"]
+	s5 -> s6 [label="!_triggered & !coffee_machine.brewing & coffee_machine.wrong & loc.within & !rule"]
+	s4 -> s2 [label="!_triggered & coffee_machine.brewing & !coffee_machine.wrong & !loc.within & !rule"]
+	s3 -> s4 [label="!_triggered & coffee_machine.brewing & !coffee_machine.wrong & loc.within & !rule"]
+	s2 -> s5 [label="_triggered & coffee_machine.brewing & !coffee_machine.wrong & loc.within & rule"]
+	s1 -> s2 [label="!_triggered & coffee_machine.brewing & !coffee_machine.wrong & !loc.within & !rule"]
+	s1 -> s3 [label="_triggered & !coffee_machine.brewing & !coffee_machine.wrong & loc.within & rule"]
+}

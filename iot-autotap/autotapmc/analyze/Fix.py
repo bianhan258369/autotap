@@ -752,7 +752,6 @@ def generateCompactFix(ltl, tap_list, init_value_dict={}, template_dict=vars(Dev
         timing_exp_list=exp_t_list
     )
     ts = system.transition_system
-    ts.writeToGv('my_temp/ts.gv')
 
     # stage 5: fix
     system = _fixRuleEdges(system, new_ltl, record_exp_list)

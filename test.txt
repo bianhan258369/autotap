@@ -1,0 +1,16 @@
+ac.mode=cold,window.on=true SHOULD NEVER OCCUR TOGETHER
+ac.mode=hot,window.on=true SHOULD NEVER OCCUR TOGETHER
+weather.raining=true,window.on=true SHOULD NEVER OCCUR TOGETHER
+projector.on=true,window.on=true SHOULD NEVER OCCUR TOGETHER
+IF air.temperature=over20 THEN ac.mode=cold
+IF air.temperature=below20 THEN ac.mode=hot
+IF light.brightness=over35 THEN bulb.on=false
+IF light.brightness=below35 THEN bulb.on=true
+IF person.distanceFromMc=over2 THEN microphone.on=false
+IF person.distanceFromMc=below2 THEN microphone.on=true
+IF person.distanceFromPro=over2 THEN projector.on=false
+IF person.distanceFromPro=below2 THEN projector.on=true
+IF co2.ppm=over800 THEN af.on=true
+IF co2.ppm=below200 THEN af.on=false
+IF air.humidity=below70 THEN ah.on=true
+IF air.humidity=over100 THEN ah.on=false

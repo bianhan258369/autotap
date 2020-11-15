@@ -1,67 +1,19 @@
-"""
-Copyright 2017-2019 Lefan Zhang
+projector = {'on': 'bool'}
 
-This file is part of AutoTap.
+microphone = {'on': 'bool'}
 
-AutoTap is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+af = {'on': 'bool'}
 
-AutoTap is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+ah = {'on': 'bool'}
 
-You should have received a copy of the GNU General Public License
-along with AutoTap.  If not, see <https://www.gnu.org/licenses/>.
-"""
+blind = {'on': 'bool'}
 
+window = {'on': 'bool'}
 
-thermostat = {'ac': 'bool',
-              'temperature': 'numeric, external',
-              'thermostat': 'numeric'}
-camera = {'recording': 'bool',
-          'siren': 'bool',
-          'motion': 'bool, external'}
-roomba = {'power': 'bool'}
-coffee_pot = {'numcup': 'numeric, external',
-              'power': 'bool'}
-faucet = {'water': 'bool'}
-oven = {'lock': 'bool',
-        'door': 'bool',
-        'temperature': 'numeric',
-        'power': 'bool'}
-refrigerator = {'temperature': 'numeric, external',
-                'door': 'bool',
-                'temperature_ctl': 'numeric'}
-fitbit = {'heart_rate': 'numeric, external',
-          'sleep': 'bool, external'}
-hue_light = {'brightness': 'numeric',
-             'color': 'set, [red, blue, green]',
-             'power': 'bool'}
-location = {'appear': 'bool, external'}
-echo = {'fm_tuner': 'numeric',
-        'is_pop': 'bool',
-        'playing': 'bool',
-        'volume': 'numeric'}
-smart_plug = {'power': 'bool'}
-smart_tv = {'power': 'bool',
-            'channel': 'numeric',
-            'volume': 'numeric'}
-window_liv = {'lock': 'bool',
-              'curtain': 'bool',
-              'open': 'bool'}
-window_bath = {'lock': 'bool',
-               'curtain': 'bool',
-               'open': 'bool'}
-window_bed = {'lock': 'bool',
-              'curtain': 'bool',
-              'open': 'bool'}
-door = {'lock': 'bool'}
-smoke_sensor = {'detect': 'bool'}
-weather = {'temperature': 'numeric, external',
-           'raining': 'bool, external'}
-clock = {'time': 'numeric, external'}
-air = {'temperature': 'numeric, external',
-       'humidity': 'numeric, external'}
+bulb = {'on': 'bool'}
+
+ac = {'mode': 'set, [cold, hot, off]'}
+light = {'brightness': 'set, [below35, over35]'}
+person = {'distancefrompro': 'set, [below2, over2]','number': 'set, [equals0]','distancefrommc': 'set, [below2, over2]'}
+co2 = {'ppm': 'set, [below800, over800]'}
+air = {'temperature': 'set, [over20, below20]','humidity': 'set, [over70, below70]'}

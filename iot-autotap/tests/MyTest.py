@@ -26,27 +26,31 @@ except FileNotFoundError:
 # Window.wopen,Ac.coldOn SHOULD NEVER OCCUR TOGETHER
 # Window.wopen,Ac.hotOn SHOULD NEVER OCCUR TOGETHER
 
+# ltl_list = [
+#     '!F (ac.mode=cold & window.on=true)',
+#     '!F (ac.mode=hot & window.on=true)',
+#     '!F (weather.raining=true & window.on=true)',
+#     '!F (window.on=true & projector.on=true)'
+# ]
+
 ltl_list = [
-    '!F (ac.mode=cold & window.on=true)',
-    '!F (ac.mode=hot & window.on=true)',
-    '!F (weather.raining=true & window.on=true)',
-    '!F (window.on=true & projector.on=true)'
+    'G (ac.mode=hot)',
 ]
 ltl = '!(%s)' % ' & '.join(ltl_list)
 print(ltl)
 tap_list = [
-    Tap(trigger='air.temperature=over20', action='AC.mode=cold'),
-    Tap(trigger='air.temperature=below20', action='AC.mode=hot'),
-    Tap(trigger='light.brightness=over35', action='bulb.on=false'),
-    Tap(trigger='light.brightness=below35', action='bulb.on=true'),
-    Tap(trigger='person.distanceFromMc=over2', action='microphone.on=false'),
-    Tap(trigger='person.distanceFromMc=below2', action='microphone.on=true'),
-    Tap(trigger='person.distanceFromPro=over2', action='projector.on=false'),
-    Tap(trigger='person.distanceFromPro=below2', action='projector.on=true'),
-    Tap(trigger='co2.ppm=over800', action='af.on=true'),
-    Tap(trigger='co2.ppm=below200', action='af.on=false'),
-    Tap(trigger='air.humidity=below70', action='ah.on=true'),
-    Tap(trigger='air.humidity=over100', action='ah.on=false')
+    Tap(trigger='air.temperature=over20', action='ac.mode=cold'),
+    Tap(trigger='air.temperature=below20', action='ac.mode=hot'),
+    # Tap(trigger='light.brightness=over35', action='bulb.on=false'),
+    # Tap(trigger='light.brightness=below35', action='bulb.on=true'),
+    # Tap(trigger='person.distanceFromMc=over2', action='microphone.on=false'),
+    # Tap(trigger='person.distanceFromMc=below2', action='microphone.on=true'),
+    # Tap(trigger='person.distanceFromPro=over2', action='projector.on=false'),
+    # Tap(trigger='person.distanceFromPro=below2', action='projector.on=true'),
+    # Tap(trigger='co2.ppm=over800', action='af.on=true'),
+    # Tap(trigger='co2.ppm=below200', action='af.on=false'),
+    # Tap(trigger='air.humidity=below70', action='ah.on=true'),
+    # Tap(trigger='air.humidity=over100', action='ah.on=false')
 ]
 
 useful_tap_list = []
@@ -74,4 +78,4 @@ print()
 for tap in ignored_tap_list:
     print('IF <%s> THEN <%s>' % (tap.trigger, tap.action))
 
-print(translateTapToRule(Tap(trigger='air.temperature=over20',condition=['a','b'] ,action='AC.mode=cold')).log())
+# print(translateTapToRule(Tap(trigger='air.temperature=over20',condition=['a','b'] ,action='AC.mode=cold')).log())

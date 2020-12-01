@@ -20,6 +20,14 @@ while True:
             states = line.split(' ')[0].split(',')
             ltl = '!F(' + '&'.join(states) + ')'
             ltl_list.append(ltl)
+        elif 'SHOULD ALWAYS BE ACTIVE' in line:
+            state = line.split(' ')[0]
+            ltl = 'G(' + state + ')'
+            ltl_list.append(ltl)
+        elif 'SHOULD NEVER HAPPEN' in line:
+            state = line.split(' ')[0]
+            ltl = '!F(' + state + ')'
+            ltl_list.append(ltl)
         else:
             if 'WHILE' in line:#IF trigger WHILE condition1,condition2,... THEN action
                 trigger = line.split(' ')[1].lower()

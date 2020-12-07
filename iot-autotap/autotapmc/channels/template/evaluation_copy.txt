@@ -13,3 +13,5 @@ window = {'on': 'bool'}
 bulb = {'on': 'bool'}
 
 ac = {'mode': 'set, [cold, hot, off]'}
+
+fan = {'on': 'bool'}

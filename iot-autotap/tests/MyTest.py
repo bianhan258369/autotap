@@ -34,13 +34,15 @@ except FileNotFoundError:
 # ]
 
 ltl_list = [
-    'G (ac.mode=hot)',
+    'G(!weather.temperature>25 | thermostat.ac=true)',
+    'G(!weather.raining=true | thermostat.ac=false)',
+    # 'G (thermostat.ac=true)',
 ]
 ltl = '!(%s)' % ' & '.join(ltl_list)
-print(ltl)
+# print(ltl)
 tap_list = [
-    Tap(trigger='air.temperature=over20', action='ac.mode=cold'),
-    Tap(trigger='air.temperature=below20', action='ac.mode=hot'),
+    # Tap(trigger='air.temperature=over20', action='ac.mode=cold'),
+    # Tap(trigger='air.temperature=below20', action='ac.mode=hot'),
     # Tap(trigger='light.brightness=over35', action='bulb.on=false'),
     # Tap(trigger='light.brightness=below35', action='bulb.on=true'),
     # Tap(trigger='person.distanceFromMc=over2', action='microphone.on=false'),
@@ -54,18 +56,18 @@ tap_list = [
 ]
 
 useful_tap_list = []
-ignored_tap_list = []
-for tap in tap_list:
-    flag = False
-    triggerEntity = tap.trigger.split('=')[0]
-    actionEntity = tap.action.split('=')[0]
-    for tempLTL in ltl_list:
-        if triggerEntity in tempLTL or actionEntity in tempLTL:
-            useful_tap_list.append(tap)
-            flag = True
-    if flag:
-        continue
-    ignored_tap_list.append(tap)
+# ignored_tap_list = []
+# for tap in tap_list:
+#     flag = False
+#     triggerEntity = tap.trigger.split('=')[0]
+#     actionEntity = tap.action.split('=')[0]
+#     for tempLTL in ltl_list:
+#         if triggerEntity in tempLTL or actionEntity in tempLTL:
+#             useful_tap_list.append(tap)
+#             flag = True
+#     if flag:
+#         continue
+#     ignored_tap_list.append(tap)
 
 starttime = time.time()
 new_rule_patch = generateCompactFix(ltl, useful_tap_list, init_value_dict={})
@@ -75,7 +77,7 @@ print("程序运行时间：%.8s s" % dtime)  #显示到微秒
 for tap in new_rule_patch:
     print(translateTapToRule(tap).log())
 print()
-for tap in ignored_tap_list:
-    print('IF <%s> THEN <%s>' % (tap.trigger, tap.action))
+# for tap in ignored_tap_list:
+#     print('IF <%s> THEN <%s>' % (tap.trigger, tap.action))
 
 # print(translateTapToRule(Tap(trigger='air.temperature=over20',condition=['a','b'] ,action='AC.mode=cold')).log())

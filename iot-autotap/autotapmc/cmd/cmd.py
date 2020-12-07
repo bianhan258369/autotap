@@ -9,7 +9,8 @@ sys.path.append(root_path)
 from autotapmc.analyze.Fix import generateCompactFix
 from autotapmc.model.Tap import ESERule, SERule, SSERule, translateTapToRule, Tap
 
-src = sys.argv[1]
+# src = sys.argv[1]
+src = '/Users/bianhan/Desktop/project/iftttgenerator/autotapInput.txt'
 f = open(src, 'r')
 ltl_list = []
 tap_list = []

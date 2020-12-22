@@ -15,7 +15,6 @@ bulb = {'on': 'bool'}
 ac = {'mode': 'set, [cold, hot, off]'}
 
 fan = {'on': 'bool'}
+
+heater = {'on': 'bool'}
 light = {'brightness': 'set, [below35, over35]'}
-person = {'distancefrompro': 'set, [below2, over1]','distancefrommc': 'set, [below2, over2]'}
-co2 = {'ppm': 'set, [below800, over800]'}
-air = {'temperature': 'set, [over20, below20]','humidity': 'set, [over70, below70]'}

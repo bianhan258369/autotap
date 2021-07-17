@@ -17,6 +17,8 @@ tap_list = []
 while True:
     line = f.readline()
     if line:
+        room = line.split(":")[0]
+        line = line.split(":")[1]
         if 'SHOULD NEVER OCCUR TOGETHER' in line:
             states = line.split(' ')[0].split(',')
             ltl = '!F(' + '&'.join(states) + ')'
@@ -34,15 +36,15 @@ while True:
                 trigger = line.split(' ')[1].lower()
                 conditions = line.split(' ')[3].lower().split(',')
                 action = line.split(' ')[5].lower()
-                tap_list.append(Tap(trigger=trigger, condition=conditions, action=action))
+                tap_list.append(Tap(room=room, trigger=trigger, condition=conditions, action=action))
             elif 'FOR' in line: #IF trigger FOR time THEN action
                 trigger = line.split(' ')[1].lower()
                 action = line.split(' ')[5].lower()
-                tap_list.append(Tap(trigger=trigger, action=action))
+                tap_list.append(Tap(room=room, trigger=trigger, action=action))
             else: #IF trigger THEN action
                 trigger = line.split(' ')[1].lower()
                 action = line.split(' ')[3].lower()
-                tap_list.append(Tap(trigger=trigger, action=action))
+                tap_list.append(Tap(room=room, trigger=trigger, action=action))
     else:
         break
 f.close()
@@ -77,6 +79,6 @@ new_rule_patch = generateCompactFix(ltl, useful_tap_list, init_value_dict={})
 for tap in new_rule_patch:
     print(translateTapToRule(tap).log())
 for tap in ignored_tap_list:
-    print('IF %s THEN %s' % (tap.trigger.strip(), tap.action.strip()))
+    print('%s:IF %s THEN %s' % (tap.room.strip(), tap.trigger.strip(), tap.action.strip()))
 
 

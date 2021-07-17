@@ -22,7 +22,7 @@ import abc
 
 
 class Tap(object):
-    def __init__(self, action=str(), trigger: str=str(), condition: list=list(), invalid=False):
+    def __init__(self, action=str(), trigger: str=str(), condition: list=list(), invalid=False, room = str(),):
         """
         initialize a Tap object
         :param action: the action to be triggered, in the form of "channel.action"
@@ -37,7 +37,7 @@ class Tap(object):
         # for cond in condition:
         #     if cond != '' and '.' not in cond:
         #         raise Exception('Wrong format of condition: %s' % cond)
-
+        self.room = room
         self.action = action
         self.trigger = trigger
         self.condition = condition
@@ -113,16 +113,17 @@ class SSERule(Rule):
 
 
 class ESERule(Rule):
-    def __init__(self, trigger, condition, action):
+    def __init__(self, trigger, condition, action, room):
+        self.room = room
         self.trigger = trigger
         self.condition = condition
         super().__init__(action)
 
     def log(self):
-        return 'IF <%s> WHILE [%s], THEN <%s>.' % (self.trigger, self.condition, self.action)
+        return '<%s>:IF <%s> WHILE [%s], THEN <%s>.' % (self.room, self.trigger, self.condition, self.action)
 
     def toTap(self):
-        return Tap(self.action, self.trigger, [self.condition])
+        return Tap(self.action, self.trigger, [self.condition], self.room)
 
 
 def translateTapToRule(tap):
